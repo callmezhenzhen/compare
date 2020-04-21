@@ -24,29 +24,6 @@ const appendBlank = (level) => {
 };
 
 /**
- * 转合法的Object
- */
-const toObj = (input) => {
-    let obj;
-    if (typeof input === 'object') { // 对象直接用
-        obj = input;
-    } else if (typeof input === 'string') {
-        try {
-            obj = JSON.parse(input); // 尝试JSON.parse();
-        } catch(e) {
-            try {
-                obj = new Function('return ' + input)(); // 处理这种非标准的JSON字符串，比如 {x: 1}, {'x': 1}等
-            } catch (e) {
-                window.alert('请输入JSON字符串');
-                return
-            }
-            
-        }
-    }
-    return obj
-};
-
-/**
  * 深度优先遍历obj
  */
 const deepTraverseObj = (obj, level) => {
@@ -74,10 +51,9 @@ const deepTraverseObj = (obj, level) => {
 /**
  * 执行入口
  */
-const formatToJsonString = (input) => {
+const formatToJsonString = (obj) => {
     let level = 0; // 指示当前对象嵌套层级，用于控制obj结束时添加空格
-    let obj = toObj(input);
-    if (obj) return deepTraverseObj(obj, level); // output作为最终的字符串输出到网页
+    return deepTraverseObj(obj, level); // output作为最终的字符串输出到网页
 };
 
 export default formatToJsonString

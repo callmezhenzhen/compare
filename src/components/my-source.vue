@@ -16,7 +16,9 @@
     </div>
 </template>
 <script>
+import toObj from '../../util/toObject';
 import formatToJsonString from '../../util/formatToJsonString';
+import toString from '../../util/toString';
 import compare from '../../util/compare';
 export default {
     name: 'my-source',
@@ -27,9 +29,7 @@ export default {
         return {
             type: 1,
             leftTValue: '',
-            rightTValue: '',
-            leftString: '',
-            rightString: ''
+            rightTValue: ''
         }
     },
     methods: {
@@ -41,19 +41,24 @@ export default {
         run() {
             if (this.type === 1 && this.leftTValue === '' || this.type === 2 && (this.leftTValue === '' || this.rightTValue === '')) return
             if (this.type === 1) {
-                this.leftString = formatToJsonString(this.leftTValue);
-                if (this.leftString) {
+                let obj = toObj(this.leftTValue);
+                if (obj === 'NOT_JSON_STRING') {
+                    window.alert('请输入JSON字符串');
+                    return
+                }
+                let leftString = formatToJsonString(obj);
+                if (leftString) {
                     this.$emit('run', {
                         type: this.type,
-                        data: [this.leftString.split('\n')]
+                        data: [leftString.split('\n')]
                     });
                 }
             } else if (this.type === 2) {
-                [this.leftString, this.rightString] = compare(formatToJsonString(this.leftTValue), formatToJsonString(this.rightTValue));
-                if (this.leftString || this.rightString) {
+                let [leftString, rightString] = compare(toString(this.leftTValue), toString(this.rightTValue));
+                if (leftString || rightString) {
                     this.$emit('run', {
                         type: this.type,
-                        data: [this.leftString, this.rightString]
+                        data: [leftString, rightString]
                     });
                 }
             }
