@@ -78,7 +78,7 @@ export default {
     height: 300px;
 }
 .t-type {
-    margin-left: 20px;
+    margin-left: 50px;
 }
 .t-area {
     margin-top: 30px;
