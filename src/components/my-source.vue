@@ -16,10 +16,10 @@
     </div>
 </template>
 <script>
-import toObj from '../../util/toObject';
-import formatToJsonString from '../../util/formatToJsonString';
-import toString from '../../util/toString';
-import compare from '../../util/compare';
+import toObj from '../../util-ts/toObject';
+import formatToJsonString from '../../util-ts/formatToJsonString';
+import toString from '../../util-ts/toString';
+import compare from '../../util-ts/compare';
 export default {
     name: 'my-source',
     props: {
