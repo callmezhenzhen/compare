@@ -17,7 +17,8 @@ const appendBlank: (level: number) => string =
         return str
     }
 
-const deepTraverseObj: (obj: Object, level: number) => string =
+// 如果把obj定义为Object类型，则obj[key]会报错，错误大概意思是key为string类型，不能用于index parameter
+const deepTraverseObj: (obj: any, level: number) => string =
     function(obj, level) {
         let str = isArray(obj) ? '[' : '{'; // 添加 '{' or '['
         level++;
