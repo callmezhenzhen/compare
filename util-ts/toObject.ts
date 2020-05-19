@@ -1,7 +1,7 @@
 const toObj: (input: string) => any = 
     function(input) {
         const msg = 'NOT_JSON_STRING';
-        let obj;
+        let obj: any;
         try {
             obj = JSON.parse(input); // 尝试JSON.parse();
         } catch(e) {

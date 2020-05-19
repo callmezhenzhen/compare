@@ -56,11 +56,12 @@ const appenWrapToFinalDiff: (a1: Array<string>, a2: Array<string>, psIdx: number
     }
 
 // 2. '='右边完整，左边省略参数类型及返回值
+// 如果函数内部定义的变量，会被赋值两次及以上，建议在定义时就规定好类型
 const compare = function(str1: string, str2: string): Array<any> {
     if (str2 && str2) {
         // 转数组比较
-        let a1 = str1.split('\n'),
-            a2 = str2.split('\n');
+        let a1: Array<any> = str1.split('\n'),
+            a2: Array<any> = str2.split('\n');
         // 比较长度
         if (a1.length > 0 && a2.length >0) {
             if (a1.length !== a2.length) { // 长度不一致

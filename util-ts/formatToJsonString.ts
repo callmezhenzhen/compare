@@ -10,7 +10,7 @@ const isObj: (val: any) => boolean =
 
 const appendBlank: (level: number) => string = 
     function(level) {
-        let str = '';
+        let str: string = '';
         for (let i = 0; i < level * 4; i++) {
             str += '&nbsp;';
         }
@@ -20,7 +20,7 @@ const appendBlank: (level: number) => string =
 // 如果把obj定义为Object类型，则obj[key]会报错，错误大概意思是key为string类型，不能用于index parameter
 const deepTraverseObj: (obj: any, level: number) => string =
     function(obj, level) {
-        let str = isArray(obj) ? '[' : '{'; // 添加 '{' or '['
+        let str: string = isArray(obj) ? '[' : '{'; // 添加 '{' or '['
         level++;
         let counter = 0; // 指示当前遍历obj位置
         for (let key in obj) {
