@@ -41,8 +41,11 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+                loader: 'ts-loader',
+                // exclude: /node_modules/,
+                options: { 
+                    appendTsSuffixTo: [/\.vue$/] 
+                }
             },
             // 处理.vue文件
             {

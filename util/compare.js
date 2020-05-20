@@ -1,4 +1,6 @@
-// 生成差异
+/**
+ * 生成差异
+ */
 const createDiffs = (a1, a2) => {
     let diffIdxs = [];
     for (let i = 0; i < a1.length; i++) {
@@ -29,7 +31,9 @@ const appendDiffs = (a1, a2, diffIdxs) => {
     return [t1, t2]
 }
 
-// 给最终的diff添加换行
+/**
+ * 给最终的diff添加换行
+ */
 const appenWrapToFinalDiff = (a1, a2, psIdx, nsIdx) => {
     let len = a1.length - a2.length; // 长度差值
     while (nsIdx > psIdx) {
@@ -50,6 +54,9 @@ const appenWrapToFinalDiff = (a1, a2, psIdx, nsIdx) => {
     return [a1, a2];
 }
 
+/**
+ *  比较生成最终展示用的输出
+ */
 const compare = (str1, str2) => {
     if (str2 && str2) {
         // 转数组比较
