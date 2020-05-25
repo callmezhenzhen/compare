@@ -15,12 +15,13 @@
         </div>
     </div>
 </template>
-<script>
+<script lang='ts'>
+import Vue from 'vue';
 import toObj from '../../util-ts/toObject';
 import formatToJsonString from '../../util-ts/formatToJsonString';
 import toString from '../../util-ts/toString';
 import compare from '../../util-ts/compare';
-export default {
+export default Vue.extend({
     name: 'my-source',
     props: {
         
@@ -64,7 +65,7 @@ export default {
             }
         }
     }
-}
+});
 </script>
 <style lang="less" scoped>
 @import "../assets/style/common.css";

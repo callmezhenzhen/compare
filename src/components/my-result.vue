@@ -24,7 +24,8 @@
 </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from 'vue';
+export default Vue.extend({
     name: 'my-result',
     props: {
         type: {
@@ -51,7 +52,7 @@ export default {
             this.$emit('goBack');
         }
     }
-}
+}); 
 </script>
 <style lang="less" scoped>
 @import "../assets/style/common.css";

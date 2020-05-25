@@ -11,8 +11,8 @@
     </div>
 </template>
 <script>
-import mySource from './components/my-source';
-import myResult from './components/my-result';
+import mySource from './components/my-source.vue';
+import myResult from './components/my-result.vue';
 
 export default {
     name: 'App',
