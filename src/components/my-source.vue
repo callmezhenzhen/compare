@@ -16,56 +16,50 @@
     </div>
 </template>
 <script lang='ts'>
-import Vue from 'vue';
 import toObj from '../../util-ts/toObject';
 import formatToJsonString from '../../util-ts/formatToJsonString';
 import toString from '../../util-ts/toString';
 import compare from '../../util-ts/compare';
-export default Vue.extend({
-    name: 'my-source',
-    props: {
-        
-    },
-    data() {
-        return {
-            type: 1,
-            leftTValue: '',
-            rightTValue: ''
-        }
-    },
-    methods: {
-        // 切换功能类型
-        toggleType() {
-            this.type = this.type === 1 ? 2 : 1;
-        },
-        // 执行功能
-        run() {
-            if (this.type === 1 && this.leftTValue === '' || this.type === 2 && (this.leftTValue === '' || this.rightTValue === '')) return
-            if (this.type === 1) {
-                let obj = toObj(this.leftTValue);
-                if (obj === 'NOT_JSON_STRING') {
-                    window.alert('请输入JSON字符串');
-                    return
-                }
-                let leftString = formatToJsonString(obj);
-                if (leftString) {
-                    this.$emit('run', {
-                        type: this.type,
-                        data: [leftString.split('\n')]
-                    });
-                }
-            } else if (this.type === 2) {
-                let [leftString, rightString] = compare(toString(this.leftTValue), toString(this.rightTValue));
-                if (leftString || rightString) {
-                    this.$emit('run', {
-                        type: this.type,
-                        data: [leftString, rightString]
-                    });
-                }
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+@Component
+export default class mySource extends Vue {
+    // name: 'my-source',
+    type = 1;
+    leftTValue = '';
+    rightTValue = '';
+
+    // 切换功能类型
+    toggleType() {
+        this.type = this.type === 1 ? 2 : 1;
+    }
+    // 执行功能
+    run() {
+        if (this.type === 1 && this.leftTValue === '' || this.type === 2 && (this.leftTValue === '' || this.rightTValue === '')) return
+        if (this.type === 1) {
+            let obj = toObj(this.leftTValue);
+            if (obj === 'NOT_JSON_STRING') {
+                window.alert('请输入JSON字符串');
+                return
+            }
+            let leftString = formatToJsonString(obj);
+            if (leftString) {
+                this.$emit('run', {
+                    type: this.type,
+                    data: [leftString.split('\n')]
+                });
+            }
+        } else if (this.type === 2) {
+            let [leftString, rightString] = compare(toString(this.leftTValue), toString(this.rightTValue));
+            if (leftString || rightString) {
+                this.$emit('run', {
+                    type: this.type,
+                    data: [leftString, rightString]
+                });
             }
         }
     }
-});
+};
 </script>
 <style lang="less" scoped>
 @import "../assets/style/common.css";
