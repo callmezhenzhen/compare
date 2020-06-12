@@ -19,7 +19,7 @@
 import toObj from '../../util-ts/toObject';
 import formatToJsonString from '../../util-ts/formatToJsonString';
 import toString from '../../util-ts/toString';
-import compare from '../../util-ts/compare';
+import compare from '../../util-ts/compareLcs';
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component

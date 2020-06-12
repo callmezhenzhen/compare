@@ -11,13 +11,13 @@
         <div class="left flex1">
             <div class="item flex" v-for="(item, index) in leftArray" :key="index" :class="{diff: item.diff}">
                 <div class="row-no">{{index}}</div>
-                <div class="row-content" v-html="item.content"></div>
+                <div class="row-content" v-html="item.val"></div>
             </div>
         </div>
         <div class="right flex1" v-if="type === 2">
             <div class="item flex" v-for="(item, index) in rightArray" :key="index" :class="{diff: item.diff}">
                 <div class="row-no">{{index}}</div>
-                <div class="row-content" v-html="item.content"></div>
+                <div class="row-content" v-html="item.val"></div>
             </div>
         </div>
     </div>
