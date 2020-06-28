@@ -50,10 +50,10 @@ const sameTwoList = function(x: Array<string>, y: Array<string>, lcs: Array<stri
         let dval = xe - xs - (ye - ys); // x, y匹配差值
         let dvabs = Math.abs(dval)
         if (dval > 0) { //填充y 
-            dvabs > 0 && y.splice(ye - 1, 0, ...Array(dvabs).fill('\n'));
+            dvabs > 0 && y.splice(ye, 0, ...Array(dvabs).fill('\n'));
             ys = xs = xe;
         } else { //填充x
-            dvabs > 0 && x.splice(xe - 1, 0, ...Array(dvabs).fill('\n'));
+            dvabs > 0 && x.splice(xe, 0, ...Array(dvabs).fill('\n'));
             xs = ys = ye;
         }
     }
