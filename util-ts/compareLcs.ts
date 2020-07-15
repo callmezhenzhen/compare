@@ -2,13 +2,13 @@ const getDp = function(x: Array<string>, y: Array<string>): Array<any> {
     let m = x.length;
     let n = y.length;
     let dp = [];
-    for (let i = 0; i <= m; i++) {
+    for (let i = 0; i <= m; i++) { //第一列全部为，i作为行数，x纵放
         dp[i] = [0];
     }
-    for (let j = 1; j <= n; j++) {
+    for (let j = 1; j <= n; j++) { //第一行全部为0，j作为列数，y横放
         dp[0][j] = 0;
     }
-    for (let i = 1; i <= m; i++) {
+    for (let i = 1; i <= m; i++) { //矩阵的第一行第一列都已经初始化过了，所以i，j都从1开始
         for (let j = 1; j <= n; j++) {
             if (x[i - 1] === y[j - 1]) {
                 dp[i][j] = dp[i - 1][j - 1] + 1;
