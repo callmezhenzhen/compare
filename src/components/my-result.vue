@@ -21,38 +21,36 @@
             </div>
         </div>
     </div>
+    <button type="button" @click="doCopy">Copy!</button>
 </div>
 </template>
 <script lang="ts">
-import Vue from 'vue';
-export default Vue.extend({
-    name: 'my-result',
-    props: {
-        type: {
-            type: Number,
-            default: 1
-        },
-        leftArray: {
-            type: Array
-        },
-        rightArray: {
-            type: Array
-        }
-    },
-    data() {
-        return {
+import { Vue, Component, Prop } from "vue-property-decorator";
+@Component
+export default class myResult extends Vue{
+// export default {
+    // name: 'my-result',
 
-        }
-    },
-    mounted() {
-        
-    },
-    methods: {
-        goBack() {
-            this.$emit('goBack');
-        }
+    @Prop() type!: number;
+    @Prop() leftArray!: Array<any>;
+    @Prop() rightArray!: Array<any>;
+
+    message ='copy message to clipboard';
+    
+    goBack() {
+        this.$emit('goBack');
     }
-}); 
+
+    doCopy() {
+        (this as any).$copyText(this.message).then(function (e: any) {
+            console.log(e, 'yes')
+        }, function (e: any) {
+            console.log(e, 'not')
+        });
+    }
+    
+// }; 
+}; 
 </script>
 <style lang="less" scoped>
 @import "../assets/style/common.css";
