@@ -1,3 +1,15 @@
+body,div,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,legend,button,input,textarea,th,td {
+    margin: 0;
+    padding: 0;
+}
+input, textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
 .flex {
     display: flex;
     justify-content: flex-start;

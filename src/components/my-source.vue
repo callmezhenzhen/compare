@@ -7,10 +7,16 @@
         </div>
         <div class="t-area flex">
             <div class="flex1">
-                <textarea class="text-box" name="l-t" v-model="leftTValue"></textarea>
+                <div class="text-box">
+                    <textarea class="text-ipt" name="l-t" v-model="leftTValue"></textarea>
+                    <button v-if="leftTValue" @click="clearText(1)" class="clear-txt">清空</button>
+                </div>
             </div>
             <div v-if="type === 2" class="flex1">
-                <textarea class="text-box" name="r-t" v-model="rightTValue"></textarea>
+                <div class="text-box">
+                    <textarea class="text-ipt" name="r-t" v-model="rightTValue"></textarea>
+                    <button v-if="rightTValue" @click="clearText(2)" class="clear-txt">清空</button>
+                </div>
             </div>
         </div>
     </div>
@@ -39,7 +45,7 @@ export default class mySource extends Vue {
         if (this.type === 1) {
             let obj = toObj(this.leftTValue);
             if (obj === 'NOT_JSON_STRING') {
-                window.alert('请输入JSON字符串');
+                this.$toast('请输入JSON字符串');
                 return
             }
             let leftString = formatToJsonString(obj);
@@ -59,6 +65,10 @@ export default class mySource extends Vue {
             }
         }
     }
+    // 清除输入框内容
+    clearText(position: number) {
+        position === 1 ? this.leftTValue = '' : this.rightTValue = '';
+    }
 };
 </script>
 <style lang="less" scoped>
@@ -68,9 +78,21 @@ export default class mySource extends Vue {
     font-size: 14px;
 }
 .text-box {
+    position: relative;
     width: 90%;
-    resize: none;
-    height: 300px;
+    .text-ipt {
+        display: block;
+        width: 100%;
+        min-height: 300px;
+        resize: none;
+        border: 1px solid #ddd;
+    }
+    .clear-txt {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        padding: 4px 8px;
+    }
 }
 .t-type {
     margin-left: 50px;
