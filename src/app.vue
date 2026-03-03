@@ -29,7 +29,7 @@ export default {
         }
     },
     created() {
-        
+        console.log('111111')
     },
     methods: {
         run(value) {
