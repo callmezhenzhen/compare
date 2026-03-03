@@ -41,6 +41,7 @@ export default {
         },
         goBack() {
             this.showInput = true;
+            console.log('222222')
         }
     }
 }
