@@ -29,7 +29,7 @@ export default {
         }
     },
     created() {
-        
+        console.log('111111')
     },
     methods: {
         run(value) {
@@ -41,6 +41,7 @@ export default {
         },
         goBack() {
             this.showInput = true;
+            console.log('222222')
         }
     }
 }
